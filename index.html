@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Tour</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <a-scene>
+        <a-sky id="mainSky" src="assets/images/panorama1.jpg"></a-sky>
+
+        <!-- Camera Rig -->
+        <a-entity id="cameraRig">
+            <!-- User Camera -->
+            <a-camera id="userCamera"></a-camera>
+            
+            <!-- Oculus Touch controls with raycaster -->
+            <a-entity oculus-touch-controls="hand: left" raycaster="objects: .menu-item; far: 5; showLine: true;"></a-entity>
+            <a-entity oculus-touch-controls="hand: right" raycaster="objects: .menu-item; far: 5; showLine: true;"></a-entity>
+        </a-entity>
+
+        <!-- VR Menu -->
+        <!-- VR Menu -->
+        <a-entity id="vrMenu" visible="false" position="0 1.0 -2"> <!-- Adjusted the starting position to make sure menu is centered to the camera's view -->
+            <a-plane class="menu-item" data-target="panorama1" position="0 0.75 0" width="1" height="0.3" color="#363636" text="value: Living Room; align: center;"></a-plane>
+            <a-plane class="menu-item" data-target="panorama2" position="0 0.45 0" width="1" height="0.3" color="#363636" text="value: Master Bedroom; align: center;"></a-plane>
+            <a-plane class="menu-item" data-target="panorama3" position="0 0.15 0" width="1" height="0.3" color="#363636" text="value: Guest Bedroom; align: center;"></a-plane>
+            <a-plane class="menu-item" data-target="panorama4" position="0 -0.15 0" width="1" height="0.3" color="#363636" text="value: Office; align: center;"></a-plane>
+        </a-entity>
+
+    </a-scene>
+
+    <!-- Browser Menu -->
+    <div id="browserMenu">
+        <a href="#" data-target="panorama1">Living Room</a>
+        <a href="#" data-target="panorama2">Master Bedroom</a>
+        <a href="#" data-target="panorama3">Guest Bedroom</a>
+        <a href="#" data-target="panorama4">Office</a>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>
